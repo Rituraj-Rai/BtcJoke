@@ -34,8 +34,8 @@ body{
     flex-direction: column;
     color: blanchedalmond;
     display: flex;
-    margin:0 5px;
-    height: 100vh;
+    margin:0 10px;
+    height: 110vh;
     justify-content: center;
     align-items: center; 
 }
