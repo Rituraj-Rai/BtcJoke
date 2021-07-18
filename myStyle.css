@@ -19,7 +19,7 @@ body{
 
 .gradient{
     background:black;
-    background-size: cover;
+    background-size: cover 100%;
     margin:0;
     /* background-position:bottom right ; */
     opacity: 0.4;
