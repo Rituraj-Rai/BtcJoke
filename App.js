@@ -41,7 +41,7 @@ btnP.addEventListener("click", async function(){
   const btc = await getBtc();
   console.log(btc);
   const cont = document.querySelector(".modal-body");
-  cont.innerHTML = `Bitcoin Price: <b>${btc.price}</b> ${btc.target}`;
+  cont.innerHTML = `Bitcoin Price: <b>${btc.price}</b> ${btc.target}<p>Change:  ${btc.change} USD</p>`;
 });
 
 const spin = document.querySelector(".bgn");
