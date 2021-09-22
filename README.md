@@ -1,3 +1,4 @@
 # BtcJoke
-Using APIs
-Nothing to Read.
+A simple web page for getting live bitcoin price.
+Fetching a Random Joke.
+Axios API used.
