@@ -14,11 +14,14 @@ async function getDadJoke() {
   }
 }
 
+const params1 = { headers: { Accept: "application/json" } }; // new params for coin API
+params1.headers["X-CoinAPI-Key"] = "6C019375-E6A7-4CEB-8CE5-E60BEFE4FB03"; //I know it's not good but there is no server side code.
+
 async function getBtc(){
   try {
-    const pobj = await axios.get("https://api.cryptonator.com/api/ticker/btc-usd", params)
+    const pobj = await axios.get("https://rest.coinapi.io/v1/exchangerate/BTC/INR", params1)
     console.log(pobj);
-    return pobj.data.ticker;
+    return pobj.data;
   } catch (error) {
     console.log(error);
     return "Something went wrong!"; 
@@ -28,20 +31,21 @@ async function getBtc(){
 
 btnJ.addEventListener("click", async function () {
   document.querySelector(".modal-title").textContent = "Yes. Here:";
-  const joke = await getDadJoke();
   const list = document.getElementsByClassName("modal-body")[0];
+  const joke = await getDadJoke();
   list.textContent = joke;
-  // const newLI = document.createElement("li");
-  // newLI.append(joke);
-  // list.append(newLI);
 });
 
 btnP.addEventListener("click", async function(){
   document.querySelector(".modal-title").textContent = "BTC price:";
-  const btc = await getBtc();
-  console.log(btc);
   const cont = document.querySelector(".modal-body");
-  cont.innerHTML = `Bitcoin Price: <b>${btc.price}</b> ${btc.target}<p>Change:  ${btc.change} USD</p>`;
+  const btc = await getBtc();
+
+  const price = Math.round(btc.rate);
+  const time = new Date(btc.time);
+  console.log(btc);
+  
+  cont.innerHTML = `Bitcoin Price: <b>${price}</b> ${btc.asset_id_quote}<p>Time:  ${time}</p>`;
 });
 
 const spin = document.querySelector(".bgn");
