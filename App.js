@@ -32,6 +32,8 @@ async function getBtc(){
 btnJ.addEventListener("click", async function () {
   document.querySelector(".modal-title").textContent = "Yes. Here:";
   const list = document.getElementsByClassName("modal-body")[0];
+  list.textContent = "Loading..."; // reset
+
   const joke = await getDadJoke();
   list.textContent = joke;
 });
@@ -39,6 +41,8 @@ btnJ.addEventListener("click", async function () {
 btnP.addEventListener("click", async function(){
   document.querySelector(".modal-title").textContent = "BTC price:";
   const cont = document.querySelector(".modal-body");
+  cont.innerHTML = "Bitcoin Price: <b>Loading...</b>"; // reset
+
   const btc = await getBtc();
 
   const price = Math.round(btc.rate);
